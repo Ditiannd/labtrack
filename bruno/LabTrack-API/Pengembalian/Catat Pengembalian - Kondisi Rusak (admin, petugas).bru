@@ -1,0 +1,32 @@
+meta {
+  name: Catat Pengembalian - Kondisi Rusak (admin, petugas)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/peminjaman/3/pengembalian
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "tanggal_kembali_aktual": "2026-07-16",
+    "kondisi": "rusak",
+    "deskripsi_kerusakan": "Terdapat retak saat digunakan",
+    "catatan": "Perlu penggantian"
+  }
+}
+
+docs {
+  Jika kondisi = "rusak", field `deskripsi_kerusakan` wajib diisi.
+  Sistem otomatis:
+  - mengubah kondisi alat menjadi "rusak"
+  - mencatat riwayat kerusakan (bisa dilihat di folder "Kerusakan")
+  - tetap mengembalikan stok (unit fisik kembali, walau kondisinya rusak)
+}

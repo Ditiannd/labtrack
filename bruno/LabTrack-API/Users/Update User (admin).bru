@@ -1,0 +1,21 @@
+meta {
+  name: Update User (admin)
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/api/users/2
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "name": "Rina Petugas Laboratorium"
+  }
+}

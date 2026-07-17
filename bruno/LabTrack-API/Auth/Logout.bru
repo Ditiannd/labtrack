@@ -1,0 +1,21 @@
+meta {
+  name: Logout
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/logout
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setVar("token", "");
+  }
+}

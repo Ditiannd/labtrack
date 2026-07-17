@@ -1,0 +1,32 @@
+meta {
+  name: Update Siswa (multipart)
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/siswa/1
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  _method: PUT
+  kelas: XII RPL 1
+  angkatan: 2023
+}
+
+docs {
+  Varian multipart dari "Update Siswa (admin)".
+
+  Method spoofing: dikirim sebagai POST + field `_method=PUT`, karena
+  PHP tidak mem-parsing body `multipart/form-data` secara native pada
+  request dengan method PUT/PATCH asli (batasan PHP, bukan Laravel).
+  Route `POST /api/siswa/{siswa}` sudah didaftarkan sebagai alias di
+  `routes/api.php` untuk menangani pola ini, persis seperti yang sudah
+  dipakai di folder Alat.
+}

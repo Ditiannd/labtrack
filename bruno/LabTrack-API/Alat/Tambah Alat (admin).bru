@@ -1,0 +1,44 @@
+meta {
+  name: Tambah Alat (admin)
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/alat
+  body: formUrlEncoded
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "nama_alat": "Gelas Kaca",
+    "kategori": "Biologi",
+    "stok": 111,
+    "kondisi": "baik",
+    "lokasi": "Lab Biologi - Rak C",
+    "deskripsi": "Alat untuk praktik"
+  }
+}
+
+body:form-urlencoded {
+  nama_alat: 
+}
+
+body:multipart-form {
+  nama_alat: Ayama
+  kategori: Tes Subjek
+  stok: 12
+  kondisi: baik
+  lokasi: Gudang Freezer
+  deskripsi: tes subjek
+}
+
+docs {
+  Hanya role admin. Untuk upload foto sekaligus, gunakan request
+  "Tambah Alat dengan Foto (multipart)".
+}

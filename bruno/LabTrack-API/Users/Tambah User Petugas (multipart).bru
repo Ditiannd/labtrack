@@ -1,0 +1,29 @@
+meta {
+  name: Tambah User Petugas (multipart)
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/users
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  name: Dedi Petugas Lab
+  email: dedi.petugas@lab.com
+  password: password
+  role: petugas
+}
+
+docs {
+  Varian multipart dari "Tambah User Petugas (admin)". Semua field
+  dikirim sebagai field teks biasa lewat `multipart/form-data`, untuk
+  mendemonstrasikan bahwa `StoreUserRequest` bisa membaca body multipart
+  tanpa perubahan kode di controller.
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Tambah Siswa (multipart)
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/siswa
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  nama: Citra Wulandari
+  nis: 23002
+  kelas: XI RPL 2
+  jurusan: Rekayasa Perangkat Lunak
+  angkatan: 2023
+  email: citra.wulandari@lab.com
+  password: password
+}
+
+docs {
+  Varian multipart dari "Tambah Siswa (admin)". Semua field dikirim
+  sebagai field teks biasa lewat `multipart/form-data` — tidak ada
+  file yang diupload di sini, hanya mendemonstrasikan bahwa
+  `StoreSiswaRequest` bisa membaca body multipart tanpa perubahan
+  kode di controller.
+}

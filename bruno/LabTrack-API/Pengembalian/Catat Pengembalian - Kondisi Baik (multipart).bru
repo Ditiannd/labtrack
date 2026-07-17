@@ -1,0 +1,29 @@
+meta {
+  name: Catat Pengembalian - Kondisi Baik (multipart)
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/peminjaman/1/pengembalian
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  tanggal_kembali_aktual: 2026-07-27
+  kondisi: baik
+  catatan: Alat dikembalikan lengkap dan dalam kondisi baik (varian multipart)
+}
+
+docs {
+  Varian multipart dari "Catat Pengembalian - Kondisi Baik". Endpoint
+  ini POST biasa, jadi tidak perlu method spoofing — cukup ganti body
+  ke `multipart/form-data` seperti pada request ini.
+
+  Peminjaman harus berstatus "acc" terlebih dahulu.
+}

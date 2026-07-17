@@ -1,0 +1,37 @@
+meta {
+  name: dd() Example
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/debug/dd-example
+  body: none
+  auth: none
+}
+
+docs {
+  # Demo: Bruno bisa merender halaman dd() bawaan Laravel
+
+  Endpoint ini memanggil `dd($data)` langsung di controller
+  (`DebugController::ddExample`) terhadap sebagian data alat.
+  `dd()` Laravel menghentikan eksekusi dan mengirim halaman HTML
+  bergaya (Symfony VarDumper) dengan status `200`, lengkap dengan
+  CSS/JS untuk expand-collapse array — bukan JSON biasa.
+
+  Sama seperti route `preview`, endpoint ini **hanya terdaftar kalau
+  `APP_ENV=local`**, supaya `dd()` tidak pernah bisa membocorkan data
+  di production.
+
+  ## Cara lihat sebagai halaman dd() yang bergaya di Bruno
+
+  1. Klik **Send**.
+  2. Buka tab **Preview** di panel response (di sebelah tab **Body**).
+  3. Karena Laravel `dd()` mengirim `Content-Type: text/html`, Bruno akan
+     merender halaman dump interaktif tersebut apa adanya di dalam
+     iframe — kamu bisa klik untuk expand/collapse array seperti biasa
+     kalau membuka route ini langsung di browser.
+  4. Kalau hanya lihat tab **Body**, yang tampil adalah HTML mentah
+     (kurang nyaman dibaca) — makanya demo ini dibuat untuk mendorong
+     penggunaan tab **Preview**.
+}

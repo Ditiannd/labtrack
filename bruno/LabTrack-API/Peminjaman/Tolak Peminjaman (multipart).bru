@@ -1,0 +1,30 @@
+meta {
+  name: Tolak Peminjaman (multipart)
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api/peminjaman/2/tolak
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  _method: PATCH
+  catatan_petugas: Stok alat sedang dipakai kelas lain (varian multipart).
+}
+
+docs {
+  Varian multipart dari "Tolak Peminjaman (admin, petugas)".
+
+  Method spoofing: dikirim sebagai POST + field `_method=PATCH`, karena
+  PHP tidak mem-parsing body `multipart/form-data` secara native pada
+  request dengan method PUT/PATCH asli. Route
+  `POST /api/peminjaman/{peminjaman}/tolak` sudah didaftarkan sebagai
+  alias di `routes/api.php` untuk menangani pola ini.
+}

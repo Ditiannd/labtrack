@@ -1,0 +1,35 @@
+meta {
+  name: Login (multipart)
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/login
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  email: admin@lab.com
+  password: password
+  device_name: bruno-multipart
+}
+
+script:post-response {
+  if (res.body && res.body.data && res.body.data.token) {
+    bru.setVar("token", res.body.data.token);
+  }
+}
+
+docs {
+  Sama persis dengan "Login (Admin)", tapi body dikirim sebagai
+  `multipart/form-data` (bukan JSON) untuk mendemonstrasikan bahwa
+  `LoginRequest` (FormRequest) tetap membaca field via `$request->input()`/
+  `validated()`, sehingga bisa menerima kedua format body tanpa
+  perubahan kode apa pun di controller.
+}

@@ -1,0 +1,33 @@
+meta {
+  name: HTML Preview
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/debug/preview
+  body: none
+  auth: none
+}
+
+docs {
+  # Demo: Bruno bisa menampilkan response HTML, bukan cuma JSON
+
+  Endpoint ini balas `Content-Type: text/html` berisi tabel data alat,
+  dan **hanya aktif kalau `APP_ENV=local`** (lihat `routes/api.php`).
+  Jika dipanggil di environment lain akan 404.
+
+  ## Cara lihat sebagai halaman (bukan teks mentah) di Bruno
+
+  1. Klik **Send** pada request ini.
+  2. Di panel response (sebelah kanan), lihat baris tab di atas body:
+     `Body | Preview | Headers | ...` — klik tab **Preview**.
+  3. Bruno akan mendeteksi `Content-Type: text/html` dan merender HTML-nya
+     di dalam iframe, persis seperti membuka halaman di browser
+     (tabel alat akan tampil terformat, bukan tag mentah).
+  4. Tab **Body** tetap menampilkan HTML mentahnya kalau butuh cek markup.
+
+  Berguna untuk endpoint yang sengaja/tidak sengaja mengembalikan halaman
+  HTML (mis. error page, halaman hasil `dd()`, atau report yang dirender
+  server-side) — Bruno tidak memaksa semuanya ditampilkan sebagai JSON.
+}

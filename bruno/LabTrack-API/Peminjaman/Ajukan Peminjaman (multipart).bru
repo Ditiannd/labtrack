@@ -1,0 +1,32 @@
+meta {
+  name: Ajukan Peminjaman (multipart)
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/peminjaman
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  id_alat: 3
+  tanggal_pinjam: 2026-07-20
+  tanggal_kembali: 2026-07-27
+  jumlah: 1
+  catatan_siswa: Untuk praktikum kelas XI (varian multipart)
+}
+
+docs {
+  Varian multipart dari "Ajukan Peminjaman (siswa)". Wajib login
+  sebagai siswa terlebih dahulu ("Auth → Login (Siswa)").
+
+  Mendemonstrasikan bahwa `StorePeminjamanRequest` bisa membaca body
+  `multipart/form-data` tanpa perubahan kode apa pun — karena ini
+  endpoint POST biasa (bukan PUT/PATCH), tidak perlu method spoofing.
+}

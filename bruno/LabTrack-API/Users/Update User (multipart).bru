@@ -1,0 +1,30 @@
+meta {
+  name: Update User (multipart)
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/users/2
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  _method: PUT
+  name: Rina Petugas Laboratorium
+}
+
+docs {
+  Varian multipart dari "Update User (admin)".
+
+  Method spoofing: dikirim sebagai POST + field `_method=PUT`, karena
+  PHP tidak mem-parsing body `multipart/form-data` secara native pada
+  request dengan method PUT/PATCH asli. Route `POST /api/users/{user}`
+  sudah didaftarkan sebagai alias di `routes/api.php` untuk menangani
+  pola ini, sama seperti di folder Alat dan Siswa.
+}

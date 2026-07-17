@@ -1,0 +1,22 @@
+meta {
+  name: Update Siswa (admin)
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/api/siswa/1
+  body: json
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "kelas": "XII RPL 1",
+    "angkatan": "2023"
+  }
+}

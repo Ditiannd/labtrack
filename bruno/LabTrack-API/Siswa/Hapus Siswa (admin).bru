@@ -1,0 +1,19 @@
+meta {
+  name: Hapus Siswa (admin)
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/api/siswa/1
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  Menghapus data siswa sekaligus akun user login-nya.
+}

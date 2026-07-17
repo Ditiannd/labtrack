@@ -1,0 +1,30 @@
+meta {
+  name: Catat Pengembalian - Kondisi Rusak (multipart)
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/peminjaman/3/pengembalian
+  body: multipartForm
+  auth: inherit
+}
+
+headers {
+  Accept: application/json
+}
+
+body:multipart-form {
+  tanggal_kembali_aktual: 2026-07-16
+  kondisi: rusak
+  deskripsi_kerusakan: Terdapat retak saat digunakan (varian multipart)
+  catatan: Perlu penggantian
+}
+
+docs {
+  Varian multipart dari "Catat Pengembalian - Kondisi Rusak". Endpoint
+  ini POST biasa, jadi tidak perlu method spoofing — cukup ganti body
+  ke `multipart/form-data` seperti pada request ini.
+
+  Jika kondisi = "rusak", field `deskripsi_kerusakan` wajib diisi.
+}
