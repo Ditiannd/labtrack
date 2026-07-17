@@ -30,5 +30,5 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/start.sh /start.sh
 RUN chmod +x /start.sh
 
-EXPOSE 5000
+EXPOSE 6000
 CMD ["/start.sh"]
